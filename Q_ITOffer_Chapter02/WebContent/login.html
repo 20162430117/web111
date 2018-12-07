@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>登陆界面</title>
+
+
+<script type="text/javascript">
+	function validate() {
+		var email = document.getElementById("email");
+		var password = document.getElementById("password");
+		if (email.value == "") {
+			alert("邮箱不能为空！");
+			email.focus();
+			return false;
+		}
+		if (password.value == "") {
+			alert("密码不能为空！");
+			password.focus();
+			return false;
+		}
+		return true;
+	}
+</script>
+</head>
+<body>
+
+
+	<!-- 登录部分开始 -->
+	<div class="content">
+		<div class="page_name">登陆</div>
+		<div class="login_content">
+			<!-- 登录表单开始 -->
+			<form action="ApplicantLoginServlet" method="post"
+				onsubmit="return validate();">
+				<div class="login_l">
+					<p class="font14" style="color: gray">使用注册邮箱登录</p>
+					<div class="span1">
+						<label class="tn-form-label">邮箱：</label> <input class="tn-textbox"
+							type="text" name="email" id="email">
+					</div>
+					<div class="span1">
+						<label class="tn-form-label">密码：</label> <input class="tn-textbox"
+							type="password" name="password" id="password">
+					</div>
+					<div class="tn-form-row-button">
+						<div class="span1">
+							<input name="submit" type="submit" class="tn-button-text"
+								value="登   录">
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</form>
+			<!-- 登录表单结束 -->
+			<div class="login_r">
+				<p align="center">
+					<b>还没有帐号？</b><a href="register.jsp">10秒钟快速注册</a>
+				</p>
+				
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<!-- 登录部分结束 -->
+
+</body>
+</html>

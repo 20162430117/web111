@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>登陆界面</title>
+
+
+<script type="text/javascript">
+
+function validate() {
+	var email = document.getElementById("email");
+	var password = document.getElementById("password");
+	
+	var pattern = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+
+	if (email.value == "") {
+		alert("邮箱不能为空！");
+		email.focus();
+		return false;
+	} else if (!pattern.test(email.value)) {
+		alert("请输入正确的邮箱格式！");
+		email.focus();
+		return false;
+	}
+	if (password.value == "") {
+		alert("密码不能为空！");
+		password.focus();
+		return false;
+	} else if (password.length<6 || password.length>12) {
+		alert("密码长度不符合要求，请输入6-12位密码!");
+		password.focus();
+		return false;
+	}
+	
+	return true;
+	function showdiv() {
+		document.getElementById("bg").style.display = "block";
+		document.getElementById("show").style.display = "block";
+	}
+	function hidediv() {
+		document.getElementById("bg").style.display = "none";
+		document.getElementById("show").style.display = "none";
+	}
+}
+</script>
+</head>
+<body>
+<!-- 注册部分开始 -->
+	<div class="content">
+		<div class="page_name">注册</div>
+		<div class="login_content">
+			<form action="ApplicantRegisterServlet" method="post" onsubmit="return validate();">
+				<div class="login_l">
+					<div class="span1">
+						<label class="tn-form-label">邮箱：</label> <input class="tn-textbox"
+							type="text" name="email" id="email">
+					</div>
+					<div class="span1">
+						<label class="tn-form-label">密码：</label> <input class="tn-textbox"
+							type="password" name="password" id="password">
+					</div>
+					<div class="tn-form-row-button">
+						<div class="span1">
+							<input name="submit" type="submit" class="tn-button-text"
+								value="立即注册">
+							
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</form>
+			<div class="register_r">
+				<p align="center">
+					<br><br>
+					<b>已有帐号？</b><a href="login.html">登录</a>
+				</p>
+				
+			</div>
+		</div>
+	</div>
+	<!-- 注册部分结束 -->
+
+	
+
+
+</body>
+</html>
