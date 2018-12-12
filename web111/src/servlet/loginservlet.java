@@ -62,7 +62,7 @@ public class loginservlet extends HttpServlet {
 							request.getSession().setAttribute("stuno",account);
 							request.getSession().setAttribute("student",stu);
 							request.getSession().setAttribute("type",type);
-							RequestDispatcher dispatcher = request.getRequestDispatcher("/stuuuu/stuope.jsp");
+							RequestDispatcher dispatcher = request.getRequestDispatcher("stupe.jsp");
 							dispatcher.forward(request, response);
 							//response.sendRedirect("/filter/stuope.jsp");
 						}
@@ -83,7 +83,7 @@ public class loginservlet extends HttpServlet {
 						else{
 							request.getSession().setAttribute("teacher",tea);
 							request.getSession().setAttribute("type",type);
-							response.sendRedirect("/filter/zhujiemian.jsp");
+							response.sendRedirect("zhujiemian.jsp");
 						}
 					}catch(Exception ex){	ex.printStackTrace();}
 				}
