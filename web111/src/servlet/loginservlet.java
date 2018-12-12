@@ -62,7 +62,7 @@ public class loginservlet extends HttpServlet {
 							request.getSession().setAttribute("stuno",account);
 							request.getSession().setAttribute("student",stu);
 							request.getSession().setAttribute("type",type);
-							RequestDispatcher dispatcher = request.getRequestDispatcher("stupe.jsp");
+							RequestDispatcher dispatcher = request.getRequestDispatcher("/filter/stupe.jsp");
 							dispatcher.forward(request, response);
 							//response.sendRedirect("/filter/stuope.jsp");
 						}
