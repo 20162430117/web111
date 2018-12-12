@@ -62,7 +62,7 @@ public class addStuServlet extends HttpServlet {
 			}
 		
 			if(n>0) 
-				response.sendRedirect("zhujiemian.jsp");
+				response.sendRedirect("guanliyuan.jsp");
 			else
 				response.sendRedirect("addStu.jsp");
 	}

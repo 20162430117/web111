@@ -50,13 +50,14 @@ if (cookies != null) {
  
   <tr>
     <td width="36%" height="40%">
-    	<form action="loginservlet" method="post"  name="form1" id="form1" onsubmit="return check()">
+    	<form action="loinservlet" method="post"  name="form1" id="form1" onsubmit="return check()">
 		<table width="280" align="center">
 		  <tr>
 		    <td><div align="right"><font size="-1" color="#556B2F">身份:</font></div></td>
 		    <td><select name="type" style="width:152">
 		        <option value="student" selected>学生</option>
 		        <option value="teacher">教师</option>
+		        <option value="guanli">管理员</option>
 		      </select></td>
 		  </tr>
 		  <tr>

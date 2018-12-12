@@ -42,7 +42,7 @@ public class StudentDao {
 				stu.setStuname(rs.getString("stuname").trim());	
 				stu.setStusex(rs.getString("stusex").trim());
 				stu.setStugrade(rs.getString("stugrade").trim());
-				stu.setHeadShot(rs.getString("headshot").trim());
+				//stu.setHeadShot(rs.getString("headshot").trim());
 			}
 			this.closeConnection();
 			return stu;		

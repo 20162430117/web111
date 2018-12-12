@@ -11,18 +11,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import util.CookieEncryptTool;
-
+import bean.Guanli;
 import bean.Student;
 import bean.Teacher;
+import dao.GuanliDao;
 import dao.StudentDao;
 import dao.TeacherDao;
 
 /**
  * Servlet implementation class loginservlet
  */
-//@WebServlet("/loginservlet")
-public class loginservlet extends HttpServlet {
+@WebServlet("/loinservlet")
+public class loinservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -48,6 +50,7 @@ public class loginservlet extends HttpServlet {
 				
 				/*3.1 学生登录*/
 				if(type.equals("student")){ 
+					System.out.println(2222);
 					StudentDao sdao = new StudentDao();
 					type = "学生";
 					try{
@@ -63,7 +66,7 @@ public class loginservlet extends HttpServlet {
 							request.getSession().setAttribute("student",stu);
 							request.getSession().setAttribute("type",type);
 							System.out.println(1111);
-							RequestDispatcher dispatcher = request.getRequestDispatcher("/filter/stuope.jsp");
+							RequestDispatcher dispatcher = request.getRequestDispatcher("stuope.jsp");
 							dispatcher.forward(request, response);
 							//response.sendRedirect("/filter/stuope.jsp");
 						}
@@ -88,6 +91,26 @@ public class loginservlet extends HttpServlet {
 						}
 					}catch(Exception ex){	ex.printStackTrace();}
 				}
+				/*3.2 管理员登录*/
+				else if(type.equals("guanli")){ 
+					System.out.println(1111);
+					GuanliDao gdao=new GuanliDao();
+					//TeacherDao tdao = new TeacherDao();
+					type = "管理员";
+					try{
+						Guanli guanli=gdao.getguanlibyid(account);
+						if(guanli==null || !guanli.getPassword().equals(password)){
+							request.setAttribute("msg1", "帐号或密码输入有误,登录失败！");
+							request.getRequestDispatcher("/index.jsp").forward(request, response);
+							}
+							else{
+								request.getSession().setAttribute("guanliyuan",guanli);
+								request.getSession().setAttribute("type",type);
+								response.sendRedirect("guanliyuan.jsp");
+							}
+						
+					}catch(Exception ex){	ex.printStackTrace();}
+				}
 			}
     	}
 		/*4.验证码错误处理*/
@@ -97,19 +120,18 @@ public class loginservlet extends HttpServlet {
 		}
 		
 	}
-	private void rememberMe(String rememberMe, String email, String password,
-			HttpServletRequest request, HttpServletResponse response) {
+
+	private void rememberMe(String rememberMe, String email, String password, HttpServletRequest request,
+			HttpServletResponse response) {
 		// 判断是否需要通过Cookie记住邮箱和密码
 		if ("true".equals(rememberMe)) {
 			// 记住邮箱及密码
-			Cookie cookie = new Cookie("COOKIE_APPLICANTEMAIL",
-					CookieEncryptTool.encodeBase64(email));
+			Cookie cookie = new Cookie("COOKIE_APPLICANTEMAIL", CookieEncryptTool.encodeBase64(email));
 			cookie.setPath("/");
 			cookie.setMaxAge(365 * 24 * 3600);
 			response.addCookie(cookie);
 
-			cookie = new Cookie("COOKIE_APPLICANTPWD",
-					CookieEncryptTool.encodeBase64(password));
+			cookie = new Cookie("COOKIE_APPLICANTPWD", CookieEncryptTool.encodeBase64(password));
 			cookie.setPath("/");
 			cookie.setMaxAge(365 * 24 * 3600);
 			response.addCookie(cookie);

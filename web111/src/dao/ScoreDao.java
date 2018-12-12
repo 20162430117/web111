@@ -35,7 +35,7 @@ public class ScoreDao {
 			sco.setStuname(rs.getString("stuname").trim());
 			sco.setCourseno(rs.getString("courseno").trim());
 			sco.setCoursename(rs.getString("coursename").trim());
-			//sco.setScore(rs.getFloat("score"));
+			sco.setScore(rs.getFloat("score"));
 			al.add(sco);
 		}
 		this.closeConnection();
@@ -45,12 +45,12 @@ public class ScoreDao {
 	
 	public void insertScore(Score sco)throws Exception{//插入新的考试信息
 		this.initConnection();
-		String sql = "insert into s_score(stuno,courseno) values(?,?)";
+		String sql = "insert into s_score(stuno,courseno) values(?,?,?)";
 		//String sql = "insert into t_score(stuno,courseno,type) values(?,?,?)";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, sco.getStuno());
 		ps.setString(2, sco.getCourseno());
-		//ps.setString(3, sco.getType());
+		ps.setString(3, sco.getType());
 		ps.executeUpdate();
 		this.closeConnection();
 	}
@@ -70,11 +70,11 @@ public class ScoreDao {
 			sco.setStuname(rs.getString("stuname").trim());
 			sco.setCourseno(courseno);
 			sco.setCoursename(rs.getString("coursename").trim());
-			//sco.setScore(rs.getFloat("score"));
-			//String str = rs.getString("state");
-//			if(str!=null){
-//				sco.setState(str.trim());
-//			}
+			sco.setScore(rs.getFloat("score"));
+			String str = rs.getString("state");
+			if(str!=null){
+				sco.setState(str.trim());
+			}
 			al.add(sco);
 		}
 		this.closeConnection();
@@ -85,6 +85,25 @@ public class ScoreDao {
 	
 	public void closeConnection() throws Exception{
 		conn.close();
+	}
+
+	/** 
+	 * FunName:           updateScore 
+	 * Description :      更新考试信息
+	 * @param：			  Score sco
+	 * @return：			  无
+	 */
+	public void updateScore(Score sco)throws Exception{
+		this.initConnection();
+		String sql = "update s_score set type=?,score=?,state=? where stuno=? and courseno=?";
+		PreparedStatement ps = conn.prepareStatement(sql);		
+		ps.setString(1, sco.getType());
+		ps.setFloat(2, sco.getScore());
+		ps.setString(3, sco.getState());
+		ps.setString(4, sco.getStuno());
+		ps.setString(5, sco.getCourseno());
+		ps.executeUpdate();
+		this.closeConnection();
 	}
 
 	
