@@ -6,6 +6,14 @@ public class Student {
 	private String stuname;//姓名
 	private String stusex;//性别
 	private String stugrade;//成绩
+	
+	private String headShot;// 头像
+	public String getHeadShot() {
+		return headShot;
+	}
+	public void setHeadShot(String headShot) {
+		this.headShot = headShot;
+	}
 	public String getStuno() {
 		return stuno;
 	}

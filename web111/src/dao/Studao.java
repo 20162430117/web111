@@ -120,7 +120,6 @@ public class Studao {
 			e.printStackTrace();
 		}
 		PreparedStatement ps = null;
-		Student stu = new Student();
 		String sql = "update s_student set stusex=?,stuname=?,stugrade=? where stuno=?";	
 		try {
 			ps=conn.prepareStatement(sql);

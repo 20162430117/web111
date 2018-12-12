@@ -29,11 +29,17 @@ public class TeacherDao {
 	public Teacher getTeacherByTeano(String teano) throws Exception{
 		Teacher tea = null;
 		this.initConnection();
-		Statement stat = conn.createStatement();
-		String sql = "select * from t_teacher where teano='"+teano+"'";
-		ResultSet rs = stat.executeQuery(sql);
+//		Statement stat = conn.createStatement();
+//		String sql = "select * from t_teacher where teano='"+teano+"'";
+//		ResultSet rs = stat.executeQuery(sql);
+		String sql = "select * from t_teacher where teano=?";
+		PreparedStatement ps = conn.prepareStatement(sql);	
+		ps.setString(1, teano);
+		//ResultSet rs = ps.executeQuery(sql);
+		ResultSet rs = ps.executeQuery();
 		if(rs.next()){
 			tea = new Teacher();
+			
 			tea.setTeano(teano);
 			tea.setPassword(rs.getString("teapwd").trim());
 			tea.setTeaname(rs.getString("teaname").trim());
