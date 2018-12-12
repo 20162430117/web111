@@ -20,7 +20,7 @@ import dao.TeacherDao;
 /**
  * Servlet implementation class loginservlet
  */
-@WebServlet("/loginservlet")
+//@WebServlet("/loginservlet")
 public class loginservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -62,7 +62,8 @@ public class loginservlet extends HttpServlet {
 							request.getSession().setAttribute("stuno",account);
 							request.getSession().setAttribute("student",stu);
 							request.getSession().setAttribute("type",type);
-							RequestDispatcher dispatcher = request.getRequestDispatcher("/filter/stupe.jsp");
+							System.out.println(1111);
+							RequestDispatcher dispatcher = request.getRequestDispatcher("/filter/stuope.jsp");
 							dispatcher.forward(request, response);
 							//response.sendRedirect("/filter/stuope.jsp");
 						}
