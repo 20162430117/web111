@@ -21,8 +21,8 @@ import dao.TeacherDao;
 /**
  * Servlet implementation class loginservlet
  */
-@WebServlet("/loinservlet")
-public class loinservlet extends HttpServlet {
+@WebServlet("/loignservlet")
+public class loignservlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

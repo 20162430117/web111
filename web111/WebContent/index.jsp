@@ -25,7 +25,7 @@
   		
   </script>
   
-  <%
+<%
 String applicantEmail = "";
 String applicantPwd = "";
 // 从客户端读取Cookie
@@ -50,7 +50,7 @@ if (cookies != null) {
  
   <tr>
     <td width="36%" height="40%">
-    	<form action="loinservlet" method="post"  name="form1" id="form1" onsubmit="return check()">
+    	<form action="loignservlet" method="post"  name="form1" id="form1" onsubmit="return check()">
 		<table width="280" align="center">
 		  <tr>
 		    <td><div align="right"><font size="-1" color="#556B2F">身份:</font></div></td>
